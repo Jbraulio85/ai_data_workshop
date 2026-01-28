@@ -2,7 +2,7 @@ import argon2 from 'argon2';
 import { Op } from 'sequelize';
 import { User } from '../users/user.model.js';
 import { Role } from '../roles/role.model.js';
-import { generateJWT } from '../../shared/helpers/generate-jwt.js';
+import { generateJWT } from '../../shared/helpers/generate-jwt.helper.js';
 
 
 export const registerUser = async (data) => {
