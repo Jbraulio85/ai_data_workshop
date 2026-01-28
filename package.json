@@ -1,0 +1,43 @@
+{
+  "name": "ai-data-workshop-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Monorepo para el webinar de IA con PostgreSQL",
+  "scripts": {
+    "prepare": "husky",
+    "init-project": "pnpm install && pnpm setup:env",
+    "setup:env": "node scripts/setup-env.js",
+    "docker:dev": "pnpm setup:env && docker-compose up --build",
+    "docker:down": "docker-compose down",
+    "dev:server": "pnpm --filter server dev",
+    "dev:client": "pnpm --filter client dev",
+    "format": "prettier --write .",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.1.0",
+    "eslint": "^9.20.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.1",
+    "prettier": "^3.5.1",
+    "prettier-plugin-tailwindcss": "^0.7.2"
+  },
+  "packageManager": "pnpm@10.17.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "argon2",
+      "esbuild"
+    ],
+    "overrides": {
+      "formdata-node": "^6.0.3"
+    }
+  },
+  "dependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^16.5.0"
+  }
+}
