@@ -27,13 +27,13 @@ export const DashboardPage = ({ user, onLogout }) => {
         />
       </div>
 
-      <div className="relative flex min-h-screen">
-        <aside className="w-64 bg-slate-800/50 p-4 border-r border-white/10 flex flex-col">
+      <div className="relative flex h-screen">
+        <aside className="flex h-screen w-64 flex-col border-r border-white/10 bg-slate-800/50 p-4">
           <UserProfile user={user} />
           <button
             onClick={onLogout}
             className={cn(
-              'flex items-center justify-center space-x-2 rounded-xl px-4 py-2 transition-all w-full mt-auto',
+              'mt-auto flex w-full items-center justify-center space-x-2 rounded-xl px-4 py-2 transition-all',
               'text-xs font-semibold text-red-400 hover:bg-red-500/10 hover:text-red-300',
             )}
           >
@@ -42,10 +42,10 @@ export const DashboardPage = ({ user, onLogout }) => {
           </button>
         </aside>
 
-        <main className="flex-1 flex flex-col p-4 md:p-8">
-          <header className="animate-in fade-in slide-in-from-top-4 duration-700 mb-8">
+        <main className="flex h-full flex-1 flex-col p-4 md:p-8">
+          <header className="animate-in fade-in slide-in-from-top-4 flex-shrink-0 duration-700">
             <section className="space-y-4 py-6 text-left">
-              <h1 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl text-center">
+              <h1 className="text-center text-4xl font-extrabold tracking-tight text-white md:text-5xl">
                 Análisis Inteligente de{' '}
                 <span className="bg-linear-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
                   Usuarios
@@ -61,19 +61,22 @@ export const DashboardPage = ({ user, onLogout }) => {
                 <HiSparkles />
                 <span>AI Data Workshop - Fundación Kinal</span>
               </div>
-              <p className="text-base text-slate-400 leading-relaxed">
-                Interactúa con tu base de datos en lenguaje natural. La IA procesará tu solicitud y generará la visualización más adecuada.
+              <p className="text-base leading-relaxed text-slate-400">
+                Interactúa con tu base de datos en lenguaje natural. La IA
+                procesará tu solicitud y generará la visualización más adecuada.
               </p>
             </section>
           </header>
 
-          <section className="flex flex-col space-y-8 flex-1">
-            <QueryInput askQuestion={askQuestion} loading={loading} />
-            <AnalysisResult queryResult={result} loading={loading} />
-            <SqlPreview sqlQuery={sqlQuery} />
-          </section>
+          <div className="flex-1 overflow-y-auto">
+            <section className="flex flex-col space-y-8 py-8">
+              <QueryInput askQuestion={askQuestion} loading={loading} />
+              <AnalysisResult queryResult={result} loading={loading} />
+              <SqlPreview sqlQuery={sqlQuery} />
+            </section>
+          </div>
 
-          <footer className="border-t border-white/5 py-8 text-center mt-8">
+          <footer className="flex-shrink-0 border-t border-white/5 py-8 text-center">
             <p className="text-xs font-medium tracking-wide text-slate-600">
               &copy; 2026 AI Data Workshop |{' '}
               <span className="text-indigo-500/80">Fundación Kinal</span>
