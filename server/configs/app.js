@@ -9,6 +9,7 @@ import { connectDB, sequelize } from './db.js';
 import { Role } from '../src/roles/role.model.js';
 import { seedData } from './seeder.js';
 import authRoutes from '../src/auth/auth.routes.js';
+import aiRoutes from '../src/ai/ai.routes.js';
 
 dotenv.config();
 
@@ -26,7 +27,7 @@ const routes = (app) => {
     res.json({ status: 'API is running' }),
   );
   app.use('/api/v1/auth', authRoutes);
-
+  app.use('/api/v1/ai', aiRoutes);
   // Manejo de 404
   app.use((req, res) => {
     res.status(404).json({
